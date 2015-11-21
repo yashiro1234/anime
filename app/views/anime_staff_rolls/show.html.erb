@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @anime_staff_roll.name %>
+</p>
+
+<p>
+  <strong>Name yomi:</strong>
+  <%= @anime_staff_roll.name_yomi %>
+</p>
+
+<%= link_to 'Edit', edit_anime_staff_roll_path(@anime_staff_roll) %> |
+<%= link_to 'Back', anime_staff_rolls_path %>

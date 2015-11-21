@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Anime Staffs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Name yomi</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @anime_staffs.each do |anime_staff| %>
+      <tr>
+        <td><%= anime_staff.name %></td>
+        <td><%= anime_staff.name_yomi %></td>
+        <td><%= link_to 'Show', anime_staff %></td>
+        <td><%= link_to 'Edit', edit_anime_staff_path(anime_staff) %></td>
+        <td><%= link_to 'Destroy', anime_staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Anime staff', new_anime_staff_path %>

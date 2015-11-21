@@ -1,0 +1,25 @@
+<%= form_for(@anime_staff) do |f| %>
+  <% if @anime_staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@anime_staff.errors.count, "error") %> prohibited this anime_staff from being saved:</h2>
+
+      <ul>
+      <% @anime_staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :name_yomi %><br>
+    <%= f.text_field :name_yomi %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

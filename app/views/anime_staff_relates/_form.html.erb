@@ -1,0 +1,29 @@
+<%= form_for(@anime_staff_relate) do |f| %>
+  <% if @anime_staff_relate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@anime_staff_relate.errors.count, "error") %> prohibited this anime_staff_relate from being saved:</h2>
+
+      <ul>
+      <% @anime_staff_relate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tid %><br>
+    <%= f.number_field :tid %>
+  </div>
+  <div class="field">
+    <%= f.label :staff_id %><br>
+    <%= f.number_field :staff_id %>
+  </div>
+  <div class="field">
+    <%= f.label :staff_roll_id %><br>
+    <%= f.number_field :staff_roll_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tid:</strong>
+  <%= @anime_staff_relate.tid %>
+</p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @anime_staff_relate.staff_id %>
+</p>
+
+<p>
+  <strong>Staff roll:</strong>
+  <%= @anime_staff_relate.staff_roll_id %>
+</p>
+
+<%= link_to 'Edit', edit_anime_staff_relate_path(@anime_staff_relate) %> |
+<%= link_to 'Back', anime_staff_relates_path %>

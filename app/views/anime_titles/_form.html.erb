@@ -1,0 +1,85 @@
+<%= form_for(@anime_title) do |f| %>
+  <% if @anime_title.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@anime_title.errors.count, "error") %> prohibited this anime_title from being saved:</h2>
+
+      <ul>
+      <% @anime_title.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tid %><br>
+    <%= f.number_field :tid %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :short_title %><br>
+    <%= f.text_field :short_title %>
+  </div>
+  <div class="field">
+    <%= f.label :title_yomi %><br>
+    <%= f.text_field :title_yomi %>
+  </div>
+  <div class="field">
+    <%= f.label :title_en %><br>
+    <%= f.text_field :title_en %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :cat %><br>
+    <%= f.number_field :cat %>
+  </div>
+  <div class="field">
+    <%= f.label :title_flag %><br>
+    <%= f.number_field :title_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :first_year %><br>
+    <%= f.number_field :first_year %>
+  </div>
+  <div class="field">
+    <%= f.label :first_month %><br>
+    <%= f.number_field :first_month %>
+  </div>
+  <div class="field">
+    <%= f.label :first_end_year %><br>
+    <%= f.number_field :first_end_year %>
+  </div>
+  <div class="field">
+    <%= f.label :first_end_month %><br>
+    <%= f.number_field :first_end_month %>
+  </div>
+  <div class="field">
+    <%= f.label :first_chid %><br>
+    <%= f.number_field :first_chid %>
+  </div>
+  <div class="field">
+    <%= f.label :keywords %><br>
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="field">
+    <%= f.label :user_point %><br>
+    <%= f.number_field :user_point %>
+  </div>
+  <div class="field">
+    <%= f.label :user_point_rank %><br>
+    <%= f.number_field :user_point_rank %>
+  </div>
+  <div class="field">
+    <%= f.label :last_update %><br>
+    <%= f.datetime_select :last_update %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tid: 1
+  title: MyString
+  short_title: MyString
+  title_yomi: MyString
+  title_en: MyString
+  comment: MyText
+  cat: 1
+  title_flag: 1
+  first_year: 1
+  first_month: 1
+  first_end_year: 1
+  first_end_month: 1
+  first_chid: 1
+  keywords: MyString
+  user_point: 1
+  user_point_rank: 1
+  last_update: 2015-09-05 04:50:44
+
+two:
+  tid: 1
+  title: MyString
+  short_title: MyString
+  title_yomi: MyString
+  title_en: MyString
+  comment: MyText
+  cat: 1
+  title_flag: 1
+  first_year: 1
+  first_month: 1
+  first_end_year: 1
+  first_end_month: 1
+  first_chid: 1
+  keywords: MyString
+  user_point: 1
+  user_point_rank: 1
+  last_update: 2015-09-05 04:50:44

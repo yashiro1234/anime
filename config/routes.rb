@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 #  resources :anime_staffs
 #  resources :anime_titles
   get "/anime_titles/test"
+  get "/anime_titles/index"
 #  resources :animes
 #  devise_for :admin_users, ActiveAdmin::Devise.config
 #  ActiveAdmin.routes(self)

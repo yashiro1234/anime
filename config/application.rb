@@ -26,6 +26,9 @@ module Demo
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     
+    # バッチ作成
+    config.autoload_paths += Dir["#{config.root}/lib"]
+
     config.generators do |g|
       g.test_framework :rspec,
       fixtures: true,

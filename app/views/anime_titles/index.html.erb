@@ -1,3 +1,4 @@
+<% debug params %>
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Anime Titles</h1>
@@ -27,7 +28,7 @@
   </thead>
 
   <tbody>
-    <% @anime_titles.each do |anime_title| %>
+    <% @animeTitleList.each do |anime_title| %>
       <tr>
         <td><%= anime_title.tid %></td>
         <td><%= anime_title.title %></td>

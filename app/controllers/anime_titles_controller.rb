@@ -7,7 +7,7 @@ class AnimeTitlesController < ApplicationController
 #    end
 
   public
-    def test
+    def index
       param = {'TID' => 2077}
       result = Syobocal::DB::TitleLookup.get(param)
       puts result.code
@@ -87,6 +87,7 @@ class AnimeTitlesController < ApplicationController
         end
         animeTitleList.push(animeTitle)
       end
+      @animeTItleList = animeTitleList
     end
 
   module CommentType

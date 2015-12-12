@@ -1,0 +1,52 @@
+p#notice = notice
+
+h1 Listing Anime Titles
+
+table
+  thead
+    tr
+      th Tid
+      th Title
+      th Short title
+      th Title yomi
+      th Title en
+      th Comment
+      th Cat
+      th Title flag
+      th First year
+      th First month
+      th First end year
+      th First end month
+      th First chid
+      th Keywords
+      th User point
+      th User point rank
+      th Last update
+
+  tbody
+    - @animeTitleList.each do |anime_title|
+      tr
+        td = anime_title.tid
+        td = anime_title.title
+        td = anime_title.short_title
+        td = anime_title.title_yomi
+        td = anime_title.title_en
+        /td = anime_title.comment
+        td = anime_title.cat
+        td = anime_title.title_flag
+        td = anime_title.first_year
+        td = anime_title.first_month
+        td = anime_title.first_end_year
+        td = anime_title.first_end_month
+        td = anime_title.first_chid
+        td = anime_title.keywords
+        td = anime_title.user_point
+        td = anime_title.user_point_rank
+        td = anime_title.last_update
+        td = link_to '参照', anime_title_path(anime_title.tid)
+        td = link_to 'Edit', edit_anime_title_path(anime_title)
+        td = link_to 'Destroy', anime_title, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+= link_to 'New Anime title', new_anime_title_path

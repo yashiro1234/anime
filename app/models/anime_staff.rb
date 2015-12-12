@@ -8,6 +8,7 @@ class AnimeStaff < ActiveRecord::Base
       saveStaff = AnimeStaff.new
       saveStaff.name = staffName
       saveStaff.save
+      logger.info "スタッフを追加しました[staffName=#{staffName}"
       r = AnimeStaff.where(name: staffName)
       return r.pluck(:id)[0]
     else

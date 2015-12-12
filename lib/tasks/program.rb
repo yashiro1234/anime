@@ -1,20 +1,12 @@
-class Tasks::Program
-
-  def self.removeOption(str)
-    s = str.gsub(/\(.+?\)/,'')
-    return s
-  end
-  def self.splitData(str)
-    sArray = str.split("、")
-    return sArray
-  end
-  def self.execute
+module ProgramUtil
+  class Program
+    def self.getHttpResult(tid)
     # 実行したいコードを書く
     p "Hello world"
     # ログファイル指定
     logger = ActiveSupport::Logger.new(Rails.root.join("log/batch.log"), "daily")
     
-    param = {'TID' => 2077}
+    param = {'TID' => tid}
     #param = {'LastUpdate' => '20150901_000000-'}
     result = Syobocal::DB::ProgLookup.get(param)
     puts result.code
@@ -38,6 +30,7 @@ class Tasks::Program
       animeProgram.ch_id = r_program[:ch_id]
       animeProgram.revision = r_program[:revision]
       animeProgram.save
+    end
     end
   end
 end

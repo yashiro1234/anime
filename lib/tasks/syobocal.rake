@@ -1,28 +1,25 @@
-class Tasks::Batch
-  require_dependency './util'
-=begin 
-  def self.removeOption(str)
-    s = str.gsub(/\(.+?\)/,'')
-    return s
-  end
-  def self.splitData(str)
-    sArray = str.split("、")
-    return sArray
-  end
-=end
-  def self.execute
-    # 実行したいコードを書く
-    p "Hello world"
+namespace :syobocal do
+  desc "しょぼいカレンダーAPIを実行し、DBにデータを格納する"
+
+  task :import => :environment do
+    
+    require 'common_util.rb'
+
     # ログファイル指定
     logger = ActiveSupport::Logger.new(Rails.root.join("log/batch.log"), "daily")
     
-    param = {'TID' => 2077}
+    #param = {'TID' => 2077}
     #param = {'LastUpdate' => '20150901_000000-'}
+    started_on  = (Date.today - 5.days).strftime('%Y%m%d')
+    ended_on    = (Date.today + 5.days).strftime('%Y%m%d')
+    range       = "#{started_on}_000000-#{ended_on}_235959"    
+    param = {}
+    #param = {:TID => 1496,:Range => range}
+    param["TID"] = 1453
+    param["range"] = range
+
+
     result = Syobocal::DB::TitleLookup.get(param)
-    puts result.code
-    puts result.message
-    pp result
-#    animeTitleList = Array.new
       
     result.each do |r_title|
       animeTitle = AnimeTitle.new
@@ -71,11 +68,11 @@ class Tasks::Batch
           if commentType == CommentType::STAFF then
             staffRollName = array[1]
             staffNameDef = array[2]
-            logger.debug(" staffRoll:" + staffRollName + " staffName:" + staffNameDef)
+            #logger.info(" staffRoll:" + staffRollName + " staffName:" + staffNameDef)
              
             # スタッフ名登録 
             animeStaff = AnimeStaff.new
-            staffList = Util::splitData(removeOption(staffNameDef))
+            staffList = CommonUtil.splitData(CommonUtil.removeOption(staffNameDef))
             staffList.each do |staffName|
               staffId = animeStaff.saveStaff(staffName)            
   
@@ -107,7 +104,8 @@ class Tasks::Batch
             animeSubTitle.tid = animeTitle.tid
             animeSubTitle.story = stMatchResult[1]
             animeSubTitle.sub_title = stMatchResult[2]
-            animeSubTitle.save 
+            animeSubTitle.save
+            logger.info("アニメサブタイトルを追加しました[tid=#{animeSubTitle.tid}]")
           end
         end
       end
@@ -115,9 +113,11 @@ class Tasks::Batch
       animeTitleResult = AnimeTitle.where(tid:animeTitle.tid)
       if animeTitleResult.empty? then
         animeTitle.save
+        logger.info("アニメタイトルを追加しました[tid=#{animeTitle.tid}]")
       end
     end
   end
+
   module CommentType
     LINK = 1,
     STAFF = 2,
@@ -126,4 +126,3 @@ class Tasks::Batch
     ENDING = 5
   end
 end
-

@@ -30,6 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "syobocal"
 # スクレイピング
 gem 'mechanize'
+gem 'slim-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -54,6 +55,9 @@ group :development, :test do
   # テスト
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+
+  gem 'ruby-debug-ide'
+  gem 'debase'
 end
 
 group :test do

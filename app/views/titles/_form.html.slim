@@ -1,0 +1,83 @@
+= form_for(@anime_title) do |f|
+   if @anime_title.errors.any?
+    div id="error_explanation"
+      h2= pluralize(@anime_title.errors.count, "error") prohibited this anime_title from being saved:
+
+      ul
+       @anime_title.errors.full_messages.each do |message|
+        li= message
+       end
+   end
+
+  div#field
+    = f.label :tidbr
+    = f.number_field :tid
+  
+  div#field
+    = f.label :titlebr
+    = f.text_field :title
+  
+  div#field
+    = f.label :short_titlebr
+    = f.text_field :short_title
+  
+  div#field
+    = f.label :title_yomibr
+    = f.text_field :title_yomi
+  
+  div#field
+    = f.label :title_enbr
+    = f.text_field :title_en
+  
+  div#field
+    = f.label :commentbr
+    = f.text_area :comment
+  
+  div#field
+    = f.label :catbr
+    = f.number_field :cat
+  
+  div#field
+    = f.label :title_flagbr
+    = f.number_field :title_flag
+  
+  div#field
+    = f.label :first_yearbr
+    = f.number_field :first_year
+  
+  div#field
+    = f.label :first_monthbr
+    = f.number_field :first_month
+  
+  div#field
+    = f.label :first_end_yearbr
+    = f.number_field :first_end_year
+  
+  div#field
+    = f.label :first_end_monthbr
+    = f.number_field :first_end_month
+  
+  div#field
+    = f.label :first_chidbr
+    = f.number_field :first_chid
+  
+  div#field
+    = f.label :keywordsbr
+    = f.text_field :keywords
+  
+  div#field
+    = f.label :user_pointbr
+    = f.number_field :user_point
+  
+  div#field
+    = f.label :user_point_rankbr
+    = f.number_field :user_point_rank
+  
+  div#field
+    = f.label :last_updatebr
+    = f.datetime_select :last_update
+  
+  div#actions
+    = f.submit
+  
+ end

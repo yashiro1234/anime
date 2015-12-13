@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 #  resources :anime_staffs
   root "home#index"
 
-  resources :anime_titles, only: [:index, :show, :new, :edit, :destroy] do
+  resources :titles, only: [:index, :show, :new, :edit, :destroy] do
   end
 
 #  get "/anime_titles/test"

@@ -11,9 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124171912) do
+ActiveRecord::Schema.define(version: 20151213151223) do
 
-  create_table "anime_programs", force: :cascade do |t|
+  create_table "channel_groups", force: :cascade do |t|
+    t.integer  "ch_gid",           limit: 4
+    t.string   "ch_group_name",    limit: 255
+    t.text     "ch_group_comment", limit: 65535
+    t.integer  "ch_group_order",   limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.integer  "ch_id",      limit: 4
+    t.string   "ch_name",    limit: 255
+    t.string   "ch_epgname", limit: 255
+    t.string   "ch_url",     limit: 255
+    t.string   "ch_epgurl",  limit: 255
+    t.text     "ch_comment", limit: 65535
+    t.integer  "ch_gid",     limit: 4
+    t.integer  "ch_number",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "programs", force: :cascade do |t|
     t.integer  "pid",          limit: 4
     t.integer  "tid",          limit: 4
     t.datetime "st_time"
@@ -31,7 +53,7 @@ ActiveRecord::Schema.define(version: 20151124171912) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "anime_staff_relates", force: :cascade do |t|
+  create_table "staff_relates", force: :cascade do |t|
     t.integer  "tid",           limit: 4
     t.integer  "staff_id",      limit: 4
     t.integer  "staff_roll_id", limit: 4
@@ -39,14 +61,14 @@ ActiveRecord::Schema.define(version: 20151124171912) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "anime_staff_rolls", force: :cascade do |t|
+  create_table "staff_rolls", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "name_yomi",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  create_table "anime_staffs", force: :cascade do |t|
+  create_table "staffs", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "name_yomi",  limit: 255
     t.datetime "created_at",             null: false
@@ -54,7 +76,7 @@ ActiveRecord::Schema.define(version: 20151124171912) do
     t.string   "option",     limit: 255
   end
 
-  create_table "anime_sub_titles", force: :cascade do |t|
+  create_table "sub_titles", force: :cascade do |t|
     t.integer  "tid",        limit: 4
     t.integer  "story",      limit: 4
     t.string   "sub_title",  limit: 255
@@ -62,7 +84,7 @@ ActiveRecord::Schema.define(version: 20151124171912) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "anime_titles", force: :cascade do |t|
+  create_table "titles", force: :cascade do |t|
     t.integer  "tid",             limit: 4
     t.string   "title",           limit: 255
     t.string   "short_title",     limit: 255
@@ -82,13 +104,6 @@ ActiveRecord::Schema.define(version: 20151124171912) do
     t.datetime "last_update"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-  end
-
-  create_table "animes", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "url",        limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
   end
 
 end

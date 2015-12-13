@@ -15,7 +15,7 @@ module ProgramUtil
 #    animeProgramList = Array.new
       
     result.each do |r_program|
-      animeProgram = AnimeProgram.new
+      animeProgram = Program.new
       animeProgram.pid = r_program[:pid]
       animeProgram.tid = r_program[:tid]
       animeProgram.st_time = r_program[:st_time]

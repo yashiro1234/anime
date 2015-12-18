@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 #  resources :anime_staffs
   root "home#index"
 
+  resources :user, only: [:show]
   resources :titles, only: [:index, :show, :new, :edit, :destroy] do
   end
 

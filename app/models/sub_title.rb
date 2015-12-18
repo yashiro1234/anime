@@ -1,4 +1,3 @@
 class SubTitle < ActiveRecord::Base
-  belongs_to :title,
-             foreign_key: "tld"
+  belongs_to :title, :class_name => "Title", foreign_key: "title_id"
 end

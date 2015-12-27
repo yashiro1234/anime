@@ -26,7 +26,7 @@ table
   tbody
     - @titleList.each do |title|
       tr
-        td = title.tid
+        td = title.id
         td = title.title
         td = title.short_title
         td = title.title_yomi
@@ -43,7 +43,7 @@ table
         td = title.user_point
         td = title.user_point_rank
         td = title.last_update
-        td = link_to '参照', title_path(title.tid)
+        td = link_to '参照', title_path(title.id)
         td = link_to 'Edit', edit_title_path(title)
         td = link_to 'Destroy', title, method: :delete, data: { confirm: 'Are you sure?' }
 

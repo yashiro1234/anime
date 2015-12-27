@@ -1,4 +1,7 @@
 class StaffRoll < ActiveRecord::Base
+  has_many :staff_relates
+  has_many :titles, through: :staff_relates
+  has_many :staffs, through: :staff_relates
 
   def saveStaffRoll(staffName)
     result = StaffRoll.where(name: staffName)

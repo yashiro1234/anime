@@ -18,7 +18,13 @@ table
   tbody
     - @programList.each do |program|
       tr
-        td = program.ch_id
+        td = program.channel_id
         td = program.st_time
         td = program.story
         td = program.prog_comment
+
+/table
+/  tbody
+/    - @staffList.each do |staff|
+/      tr
+/        td = staff.name

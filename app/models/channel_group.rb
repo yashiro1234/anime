@@ -1,4 +1,4 @@
 class ChannelGroup < ActiveRecord::Base
-  has_many :channels,
-           foreign_key: "ch_gid"
+  has_one :user
+  has_many :channels
 end

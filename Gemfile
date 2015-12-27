@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #gem 'devise'
 
 #gem "syoboi_calendar"
-gem "syobocal"
+gem 'syobocal'
 # スクレイピング
 gem 'mechanize'
 gem 'slim-rails'
@@ -35,23 +35,29 @@ gem 'slim-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+#gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'activerecord-import'
 
+# LEFT OUTERを簡潔に記述
+gem 'squeel'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+#  gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
+  gem 'hirb-unicode'
+  gem 'hirb'
+  gem 'pry-byebug'
+  gem 'pry-coolline'
+  gem 'pry-rails'
   # テスト
   gem 'rspec-rails'
   gem 'factory_girl_rails'

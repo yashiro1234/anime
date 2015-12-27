@@ -1,7 +1,6 @@
 class CreateTitles < ActiveRecord::Migration
   def change
     create_table :titles do |t|
-      t.integer :tid
       t.string :title
       t.string :short_title
       t.string :title_yomi

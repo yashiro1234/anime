@@ -5,13 +5,13 @@ class TitlesController < ApplicationController
   end
   def show
     tid = params[:id]
-    @title = Title.find_by(tid: tid)
-    #@subTitleList = SubTitle.where(tid: tid)
+    @title = Title.find(tid)
     @subTitleList = @title.sub_titles
     #user = User.login_user
-    Channel.find(:all)
-    @channelIdList = Channel.select("ch_id").where(ch_gid: user.ch_gid)
-    @programList = Program.where(tid: tid, ch_id: @channelIdList)
+    #@channelIdList = Channel.select("channel_id").where(channel_group_id: user.channel_group_id)
+    @programList = User.find(1).programs
+    #@staffList = Title.includes(staff_relates: [:staff, :staff_roll]).references(:staff, :staff_roll)
+    #@staffList = Title.first.staffs.select([:id, :name]).joins(:staff_rolls).select(staff_rolls: [:id, :name])
   end
   def edit
 

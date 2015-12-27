@@ -23,7 +23,7 @@ namespace :syobocal do
       
     result.each do |r_title|
       animeTitle = Title.new
-      animeTitle.tid = r_title[:tid]
+      animeTitle.id = r_title[:tid]
       animeTitle.title = r_title[:title]
       animeTitle.short_title = r_title[:short_title]
       animeTitle.title_yomi = r_title[:title_yomi]
@@ -82,10 +82,10 @@ namespace :syobocal do
 
               # スタッフ関係登録
               staffRelate = StaffRelate.new
-              staffRelate.tid = animeTitle.tid
+              staffRelate.title_id = animeTitle.id
               staffRelate.staff_id = staffId
               staffRelate.staff_roll_id = staffRollId
-              result = StaffRelate.where(tid:animeTitle.tid, staff_id: staffId, staff_roll_id: staffRollId)
+              result = StaffRelate.where(title_id:animeTitle.id, staff_id: staffId, staff_roll_id: staffRollId)
               if result.empty? then
                 staffRelate.save
               end
@@ -101,19 +101,19 @@ namespace :syobocal do
           animeSubTitle = SubTitle.new
           stMatchResult = subTitle.match(/\*(.{2,2})\*(.*)/)
           unless stMatchResult.nil? then
-            animeSubTitle.tid = animeTitle.tid
+            animeSubTitle.title_id = animeTitle.id
             animeSubTitle.story = stMatchResult[1]
             animeSubTitle.sub_title = stMatchResult[2]
             animeSubTitle.save
-            logger.info("アニメサブタイトルを追加しました[tid=#{animeSubTitle.tid}]")
+            logger.info("アニメサブタイトルを追加しました[tid=#{animeSubTitle.title_id}]")
           end
         end
       end
 #      animeTitleList.push(animeTitle)
-      animeTitleResult = Title.where(tid:animeTitle.tid)
+      animeTitleResult = Title.where(id:animeTitle.id)
       if animeTitleResult.empty? then
         animeTitle.save
-        logger.info("アニメタイトルを追加しました[tid=#{animeTitle.tid}]")
+        logger.info("アニメタイトルを追加しました[tid=#{animeTitle.id}]")
       end
     end
   end
@@ -125,8 +125,8 @@ namespace :syobocal do
 
     result.each do |r_program|
       program = Program.new
-      program.pid = r_program[:pid]
-      program.tid = r_program[:tid]
+      program.id = r_program[:pid]
+      program.title_id = r_program[:tid]
       program.st_time = r_program[:st_time]
       program.st_offset = r_program[:st_offset]
       program.ed_time = r_program[:ed_time]
@@ -136,7 +136,7 @@ namespace :syobocal do
       program.flag = r_program[:flag]
       program.deleted = r_program[:deleted]
       program.warn = r_program[:warn]
-      program.ch_id = r_program[:ch_id]
+      program.channel_id = r_program[:ch_id]
       program.revision = r_program[:revision]
       program.save
     end
@@ -147,13 +147,13 @@ namespace :syobocal do
     result = Syobocal::DB::ChLookup.get(param)
     result.each do |r_channel|
       channel = Channel.new
-      channel.ch_id = r_channel[:ch_id]
+      channel.id = r_channel[:ch_id]
       channel.ch_name = r_channel[:ch_name]
       channel.ch_epgname = r_channel[:chi_epgname]
       channel.ch_url = r_channel[:ch_url]
       channel.ch_epgurl = r_channel[:ch_epgurl]
       channel.ch_comment = r_channel[:ch_comment]
-      channel.ch_gid = r_channel[:ch_gid]
+      channel.channel_group_id = r_channel[:ch_gid]
       channel.ch_number = r_channel[:ch_number]
       channel.save
     end
@@ -164,7 +164,7 @@ namespace :syobocal do
     result = Syobocal::DB::ChGroupLookup.get(param)
     result.each do |r_channelGroup|
       channelGroup = ChannelGroup.new
-      channelGroup.ch_gid = r_channelGroup[:ch_gid]
+      channelGroup.id = r_channelGroup[:ch_gid]
       channelGroup.ch_group_name = r_channelGroup[:ch_group_name]
       channelGroup.ch_group_comment = r_channelGroup[:ch_group_comment]
       channelGroup.ch_group_order = r_channelGroup[:ch_group_order]

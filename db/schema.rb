@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217173759) do
+ActiveRecord::Schema.define(version: 20151219184838) do
+
+  create_table "app_users", force: :cascade do |t|
+    t.string   "name",             limit: 255
+    t.integer  "channel_group_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "channel_groups", force: :cascade do |t|
-    t.integer  "ch_gid",           limit: 4
     t.string   "ch_group_name",    limit: 255
     t.text     "ch_group_comment", limit: 65535
     t.integer  "ch_group_order",   limit: 4
@@ -23,21 +29,20 @@ ActiveRecord::Schema.define(version: 20151217173759) do
   end
 
   create_table "channels", force: :cascade do |t|
-    t.integer  "ch_id",      limit: 4
-    t.string   "ch_name",    limit: 255
-    t.string   "ch_epgname", limit: 255
-    t.string   "ch_url",     limit: 255
-    t.string   "ch_epgurl",  limit: 255
-    t.text     "ch_comment", limit: 65535
-    t.integer  "ch_gid",     limit: 4
-    t.integer  "ch_number",  limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "channel_group_id", limit: 4
+    t.string   "ch_name",          limit: 255
+    t.string   "ch_epgname",       limit: 255
+    t.string   "ch_url",           limit: 255
+    t.string   "ch_epgurl",        limit: 255
+    t.text     "ch_comment",       limit: 65535
+    t.integer  "ch_number",        limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "programs", force: :cascade do |t|
-    t.integer  "pid",          limit: 4
-    t.integer  "tid",          limit: 4
+    t.integer  "title_id",     limit: 4
+    t.integer  "channel_id",   limit: 4
     t.datetime "st_time"
     t.integer  "st_offset",    limit: 4
     t.datetime "ed_time"
@@ -47,14 +52,13 @@ ActiveRecord::Schema.define(version: 20151217173759) do
     t.integer  "flag",         limit: 4
     t.integer  "deleted",      limit: 4
     t.integer  "warn",         limit: 4
-    t.integer  "ch_id",        limit: 4
     t.integer  "revision",     limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
   create_table "staff_relates", force: :cascade do |t|
-    t.integer  "tid",           limit: 4
+    t.integer  "title_id",      limit: 4
     t.integer  "staff_id",      limit: 4
     t.integer  "staff_roll_id", limit: 4
     t.datetime "created_at",              null: false
@@ -71,9 +75,9 @@ ActiveRecord::Schema.define(version: 20151217173759) do
   create_table "staffs", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "name_yomi",  limit: 255
+    t.string   "option",     limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.string   "option",     limit: 255
   end
 
   create_table "sub_titles", force: :cascade do |t|
@@ -85,7 +89,6 @@ ActiveRecord::Schema.define(version: 20151217173759) do
   end
 
   create_table "titles", force: :cascade do |t|
-    t.integer  "tid",             limit: 4
     t.string   "title",           limit: 255
     t.string   "short_title",     limit: 255
     t.string   "title_yomi",      limit: 255
@@ -107,10 +110,10 @@ ActiveRecord::Schema.define(version: 20151217173759) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "ch_gid",     limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",             limit: 255
+    t.integer  "channel_group_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end

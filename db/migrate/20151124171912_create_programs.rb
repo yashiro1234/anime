@@ -1,8 +1,8 @@
 class CreatePrograms < ActiveRecord::Migration
   def change
     create_table :programs do |t|
-      t.integer :pid
-      t.integer :tid
+      t.integer :title_id
+      t.integer :channel_id
       t.datetime :st_time
       t.integer :st_offset
       t.datetime :ed_time
@@ -12,7 +12,6 @@ class CreatePrograms < ActiveRecord::Migration
       t.integer :flag
       t.integer :deleted
       t.integer :warn
-      t.integer :ch_id
       t.integer :revision
 
       t.timestamps null: false

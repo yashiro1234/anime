@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {:omniauth_callbacks => "omniauth_callbacks"}
+  get 'pages/index'
+
+  get 'pages/show'
+
 #  resources :anime_staff_relates
 #  resources :anime_staff_rolls
 #  resources :anime_staffs

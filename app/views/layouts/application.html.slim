@@ -5,10 +5,22 @@ head
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
-
 body
-
-
-  header#header
-    h1.title.logo Slim Test
+  /1.ナビゲーションバーの設定
+  nav.navbar.navbar-default
+    .container
+      .navbar-header
+        a.navbar-brand href='/anime/titles' アニメDB
+      ul.nav.navbar-nav.navbar-right
+        -if user_signed_in?
+          li = link_to current_user.username, pages_show_path
+          li = link_to 'プロフィール変更', edit_user_registration_path
+          li = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          li = link_to 'サインアップ', new_user_registration_path
+          li = link_to 'ログイン', new_user_session_path
+  p.notice
+    = notice
+  p.alert
+    = alert
   == yield

@@ -1,27 +1,26 @@
-h1 アニメ詳細
-= @title.title
+div
+  h1 = @title.title
+  table.table.table-bordered.table-striped
+    th 話数
+    th サブタイトル
+    tbody
+      - @subTitleList.each do |subTitle|
+        tr
+          td = subTitle.story
+          td = subTitle.sub_title
 
-table
-  th 話数
-  th サブタイトル
-  tbody
-    - @subTitleList.each do |subTitle|
-      tr
-        td = subTitle.story
-        td = subTitle.sub_title
-
-table
-  th チャンネル
-  th 開始日時
-  th 話数
-  th 備考
-  tbody
-    - @programList.each do |program|
-      tr
-        td = program.channel_id
-        td = program.st_time
-        td = program.story
-        td = program.prog_comment
+  table
+    th チャンネル
+    th 開始日時
+    th 話数
+    th 備考
+    tbody
+      - @programList.each do |program|
+        tr
+          td = program.channel_id
+          td = program.st_time
+          td = program.story
+          td = program.prog_comment
 
 /table
 /  tbody
